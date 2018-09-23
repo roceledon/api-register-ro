@@ -1,0 +1,147 @@
+swagger: "2.0"
+info:
+  description: "Api for create accounts for ragnarok server"
+  version: "0.0.1"
+  title: "API Ragnarok Register"
+  contact:
+    email: "roberto.celedon@bennu.cl"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "register.zophyro.cl"
+basePath: "/v1"
+tags:
+- name: "register"
+  description: "create and find accounts"
+schemes:
+- "https"
+- "http"
+paths:
+  /register:
+    post:
+      tags:
+      - "register"
+      summary: "create a new accont"
+      description: ""
+      operationId: "save"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Register object that needs to create account"
+        required: true
+        schema:
+          $ref: "#/definitions/LoginRequest"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/Login"
+        405:
+          description: "Invalid input"
+  /register/user/{userId}:
+    get:
+      tags:
+      - "register"
+      summary: "Finds accounts by userId"
+      description: "Finds accounts by userId, return a list of object Login"
+      operationId: "findLoginByUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "userId of account"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Login"
+        400:
+          description: "Invalid status value"
+  /register/email/{email}:
+    get:
+      tags:
+      - "register"
+      summary: "Finds accounts by userId"
+      description: "Finds accounts by email, return a list of object Login"
+      operationId: "findLoginByEmail"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "email"
+        in: "path"
+        description: "email of account, example: example@example.com"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Login"
+        400:
+          description: "Invalid status value"
+definitions:
+  LoginRequest:
+    type: "object"
+    properties:
+      userId:
+        type: "string"
+        description: "username"
+      userPass:
+        type: "string"
+        description: "password"
+      sex:
+        type: "string"
+        example: "M"
+        enum:
+        - "M"
+        - "F"
+        - "S"
+      email:
+        type: "string"
+        example: "example@example.com"
+      birthdate:
+        type: "string"
+        format: "date"
+        description: "format: YYYY-MM-DD"
+        example: "2018-09-20"
+      pincode:
+        type: "string"
+        description: "length 4"
+        example: "1234"
+  Login:
+    type: "object"
+    properties:
+      accountId:
+        type: "integer"
+        format: "int64"
+        example: "2000001"
+      userId:
+        type: "string"
+        description: "username"
+        example: "example"
+      sex:
+        type: "string"
+        enum:
+        - "M"
+        - "F"
+        - "S"
+        example: "M"
+      email:
+        type: "string"
+        example: "example@example.com"
+      birthdate:
+        type: "string"
+        format: "date"
+        example: "2018-09-20"
+        description: "format: YYYY-MM-DD"

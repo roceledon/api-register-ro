@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: zophyro.cl.register.RegisterApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.572 s <<< FAILURE! - in zophyro.cl.register.RegisterApplicationTests
+contextLoads(zophyro.cl.register.RegisterApplicationTests)  Time elapsed: 0.005 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flyway' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.flywaydb.core.Flyway]: Factory method 'flyway' threw exception; nested exception is java.lang.IllegalStateException: Cannot find migrations location in: [classpath:db/mysql/migration] (please add migrations or check your Flyway configuration)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.flywaydb.core.Flyway]: Factory method 'flyway' threw exception; nested exception is java.lang.IllegalStateException: Cannot find migrations location in: [classpath:db/mysql/migration] (please add migrations or check your Flyway configuration)
+Caused by: java.lang.IllegalStateException: Cannot find migrations location in: [classpath:db/mysql/migration] (please add migrations or check your Flyway configuration)
+
