@@ -1,4 +1,4 @@
 # api-register-ro
 
 # API register Ragnarok Online
-- API para crear cuentas de ragnarok online en un servidor emulado rathena, se debe consumir desde su página web
+- API to create accounts of ragnarok online in a server emulated rathena, you must consume from your web page.
